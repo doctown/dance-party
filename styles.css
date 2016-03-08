@@ -33,10 +33,6 @@ body, a:link, a:visited, a:active{
   content: url('lana.gif');
   height: 300px;
   width: 150px;
-  -webkit-transition: 1s ease-in-out;
-    -moz-transition: 1s ease-in-out;
-    -o-transition: 1s ease-in-out;
-    transition: 1s ease-in-out;
 }
 
 .dave {
@@ -46,11 +42,40 @@ body, a:link, a:visited, a:active{
 }
 
 .electricSlide {
-    -webkit-transform: translate(3em,0);
-    -moz-transform: translate(3em,0);
-    -o-transform: translate(3em,0);
-    -ms-transform: translate(3em,0);
-    transform: translate(3em,0);
+  animation: slide 3s ease-in-out both alternate infinite;
 
+ /* -webkit-animation-name: slide;
+  -moz-animation-name: slide;
+  -o-animation-name: slide;
+  animation-name: slide;
+  -webkit-animation-duration: 3s;
+  -moz-animation-duration: 3s;
+  -o-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  -o-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-direction: alternate;
+  -moz-animation-direction: alternate;
+  -o-animation-direction: alternate;
+  animation-direction: alternate;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;*/
 }
 
+@keyframes slide {
+  /*0%{transition: transform: translateX(0);}*/
+  /*20% {transform: translateX(200px);}*/
+  /*35% {transform: translateX(0);}*/
+  /*90% {transform: translateX(980px);}*/
+  /*100% {transform: translateX(900px);}*/
+  from {transform: translateX(-600px);}
+  to {transform: translateX(980px);}
+}

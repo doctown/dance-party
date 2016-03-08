@@ -8,9 +8,6 @@ var makeTriniDancer = function(top, left, timeBetweenSteps) {
   this.electricSlide();
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
-  this.$node.animate({
-    transform: 'translate(3em,0)'
-  });
 };
 
 makeTriniDancer.prototype = Object.create(makeDancer.prototype);

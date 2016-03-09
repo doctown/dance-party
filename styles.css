@@ -24,58 +24,79 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  /*border:10px solid red;*/
-  /*border-radius:10px;*/
-  position:absolute;  
-}
-
-.trini {
-  content: url('lana.gif');
+  position:absolute;
   height: 300px;
   width: 150px;
+}
+
+.blinkyDancer {
+  content: url('chickenDancer.gif');
+}
+.trini {
+  content: url('lana.gif');
 }
 
 .dave {
   content: url('carlton.gif');
-  height: 300px;
-  width: 150px;
 }
 
 .electricSlide {
-  animation: slide 3s ease-in-out both alternate infinite;
-
- /* -webkit-animation-name: slide;
-  -moz-animation-name: slide;
-  -o-animation-name: slide;
-  animation-name: slide;
-  -webkit-animation-duration: 3s;
-  -moz-animation-duration: 3s;
-  -o-animation-duration: 3s;
-  animation-duration: 3s;
-  -webkit-animation-timing-function: ease-in-out;
-  -moz-animation-timing-function: ease-in-out;
-  -o-animation-timing-function: ease-in-out;
-  animation-timing-function: ease-in-out;
-  -webkit-animation-fill-mode: both;
-  -moz-animation-fill-mode: both;
-  -o-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation-direction: alternate;
-  -moz-animation-direction: alternate;
-  -o-animation-direction: alternate;
-  animation-direction: alternate;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  -o-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;*/
+  animation: slide-left 3s ease-in-out both alternate infinite,
+  slide-right 3s linear both alternate infinite;
 }
 
-@keyframes slide {
-  /*0%{transition: transform: translateX(0);}*/
-  /*20% {transform: translateX(200px);}*/
-  /*35% {transform: translateX(0);}*/
-  /*90% {transform: translateX(980px);}*/
-  /*100% {transform: translateX(900px);}*/
-  from {transform: translateX(-600px);}
-  to {transform: translateX(980px);}
+.couple {
+  animation-name: slide-right;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+
+  animation-name: slide-left;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  } 
+
+.sway {
+  animation: sway-left 3s linear both alternate infinite,
+  sway-right 3s linear both alternate infinite;
+}
+
+.twirl {
+ animation: spin-left .5s ease-in both alternate infinite,
+ spin-right .5s ease-in both alternate infinite;
+}
+
+@keyframes slide-left {
+  from {transform: translateX(0px);}
+  to {transform: translateX(-200px);}
+}
+
+@keyframes slide-right {
+  from {transform: translateX(-200px);}
+  to {transform: translateX(200px);}
+}
+
+@keyframes sway-left {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(-30deg);}
+}
+
+@keyframes sway-right {
+  from {transform: rotate(-30deg);}
+  to {transform: rotate(30deg);}
+}
+
+@keyframes spin-left {
+  from {transform: scaleX(0);}
+  to {transform: scaleX(-1);}
+}
+
+@keyframes spin-right {
+  from {transform: scaleX(-1);}
+  to {transform: scaleX(0)}
 }

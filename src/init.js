@@ -27,7 +27,57 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    //add each dancer created to windows.dancers array
+    window.dancers.push(dancer);
+
+    //get distance between two dancers and returns distance
+    var getDistance = function(currentDancerPosition, neighborPosition) {
+      //returns the square root of squared difference of x-coordinate + squared-difference of y-coordinate
+      //x-difference of dancers
+      var xDiff = currentDancerPosition.left - neighborPosition.left;
+      //y-difference of dancers
+      var yDiff = currentDancerPosition.top - neighborPosition.top;
+      return Math.sqrt( Math.pow(xDiff, 2) + Math.pow(yDiff, 2) );
+    };
+
+    //When mouse moves over dancer, find nearest partner and dance together
+    //then call getPartner method
+    dancer.$node.on('mouseover', function() {
+      //find position of current dancer
+      var myPosition = dancer.$node.position(); // { top : #, left : #}
+      var closestDancer = { dancer: null, distance: null };
+      //iterate through all dancers and find nearest neighbor by distance.
+      window.dancers.forEach(function(neighbor) {
+        if (neighbor !== dancer) {
+          var neighborPosition = neighbor.$node.position(); 
+          //determine distance between current dancer and neighbor
+          var distance = getDistance(myPosition, neighborPosition);
+          if (closestDancer.distance === null || distance < closestDancer.distance) {
+            closestDancer.distance = distance;
+            closestDancer.dancer = neighbor;
+          }
+        }
+      }); 
+      if (closestDancer.dancer !== null) {
+        dancer.getPartner(closestDancer.dancer);
+      }
+    });
+
+
     $('body').append(dancer.$node);
+  });
+
+  $('.lineUpButton').on('click', function (event) {
+    event.preventDefault();
+    var initialPositionTop = 400;
+    var initialPositionLeft = 50;
+
+    window.dancers.forEach(function (dancer) {
+      // call lineup for dancer and provide new lineup position
+      dancer.lineUp(initialPositionTop, initialPositionLeft);
+      initialPositionLeft += 100;
+    });
+
   });
 });
 
